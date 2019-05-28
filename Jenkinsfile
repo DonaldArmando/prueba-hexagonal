@@ -16,12 +16,22 @@ pipeline {
           steps{
         echo "------------>Checkout<------------"
         checkout([$class: 'GitSCM', branches: [[name: '*/master']],doGenerateSubmoduleConfigurations: false, extensions: [], gitTool:'Git_Centos', submoduleCfg: [], userRemoteConfigs: [[credentialsId:'GitHub_DonaldArmando', url:'https://github.com/DonaldArmando/prueba-hexagonal.git']]])
-      } 
-  }
+        } 
+    }
 
+      stage('Unit Tests') {
+        steps{
+        echo "------------>Unit Tests<------------"
+          sh 'gradle --b ./build.gradle test'
+        }
+      }
+
+
+
+
+ }
 
  
- }
 
  
  
