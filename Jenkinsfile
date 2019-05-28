@@ -50,7 +50,15 @@ pipeline {
  }
 
  
+  post {
+    failure {
+      echo 'This will run only if failed'
+      mail (to: 'donald.torres@ceiba.com.co',subject: "FailedPipeline:${currentBuild.fullDisplayName}",body: "Something is wrongwith ${env.BUILD_URL}")
+  }
+}
 
  
  
 }
+
+
