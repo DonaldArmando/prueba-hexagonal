@@ -56,6 +56,9 @@ pipeline {
       echo 'This will run only if failed'
       mail (to: 'donald.torres@ceiba.com.co',subject: "FailedPipeline:${currentBuild.fullDisplayName}",body: "Something is wrongwith ${env.BUILD_URL}")
   }
+  success {
+      echo 'This will run only if successful'
+    }
 }
  
  
