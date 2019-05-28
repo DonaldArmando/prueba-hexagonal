@@ -1,13 +1,13 @@
 package co.com.parqueadero.controladores;
 
-import co.com.parqueadero.DTO.MotoDTO;
+
 import co.com.parqueadero.core.modelos.Moto;
+import co.com.parqueadero.manejador.fabrica.dto.MotoDTO;
 import co.com.parqueadero.manejador.moto.ManejadorIngresarMoto;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
-
-import java.time.LocalDateTime;
 
 
 @RestController
@@ -20,28 +20,10 @@ public class ControladorMoto {
         this.manejadorIngresarMoto = manejadorIngresarMoto;
     }
 
-  /*  @PostMapping
-    public Mono<MotoDTO> registrarMoto(@RequestBody MotoDTO motoDTO) {
-        Moto moto = new Moto(
-                motoDTO.getPlaca(),
-                motoDTO.getFechaEntrada(),
-                motoDTO.getFechaSalida(),
-                motoDTO.getValorHora(),
-                motoDTO.getValorDia(),
-                motoDTO.getCilindraje());
-        return this.manejadorIngresarMoto.ejecutar(moto)
-                .map(motoDominio -> new MotoDTO(
-                        motoDTO.getPlaca(),
-                        motoDTO.getFechaEntrada(),
-                        motoDTO.getFechaSalida(),
-                        motoDTO.getValorHora(),
-                        motoDTO.getValorDia(),
-                        motoDTO.getCilindraje()));
-    }*/
 
-    @GetMapping
-    public Mono<Moto> a() {
-        return this.manejadorIngresarMoto.ejecutar(new Moto("Placa", LocalDateTime.now(), LocalDateTime.now(), 1, 1, 1));
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<Moto> registrarMoto(@RequestBody MotoDTO motoDTO) {
+        return this.manejadorIngresarMoto.ejecutar(motoDTO);
     }
 
 }

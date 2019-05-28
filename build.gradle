@@ -2,6 +2,9 @@ plugins {
     id 'org.springframework.boot' version '2.1.5.RELEASE'
     id 'java'
     id "org.sonarqube" version "2.7"
+/*
+    apply plugin: 'jacoco'
+*/
 }
 ext {
     springBootVersion = '2.1.4.RELEASE'
@@ -18,7 +21,10 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.5.RELEASE'   
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.5.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
+
 
     compile project(':infraestructura')
 }
@@ -27,6 +33,7 @@ dependencies {
 subprojects {
     apply plugin: "java"
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'jacoco'
 
 
     sourceCompatibility = '1.8'

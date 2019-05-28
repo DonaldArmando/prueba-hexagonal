@@ -6,6 +6,8 @@ import co.com.parqueadero.core.repositorio.IngresarMoto;
 import co.com.parqueadero.validaciones.exepciones.ExcepcionDuplicidad;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+
 public class RegistrarMoto {
 
     private static final String LA_MOTO_AUN_NO_SE_LIQUIDA = "La moto aun no se liquida";
