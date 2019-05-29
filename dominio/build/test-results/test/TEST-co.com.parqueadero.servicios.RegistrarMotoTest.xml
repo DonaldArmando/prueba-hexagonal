@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.parqueadero.servicios.RegistrarMotoTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-29T14:33:07" hostname="DONALD-TORRES" time="2.723">
+<testsuite name="co.com.parqueadero.servicios.RegistrarMotoTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-29T20:18:32" hostname="DONALD-TORRES" time="3.234">
   <properties/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistrada" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="2.711"/>
-  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.01"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistrada" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="3.216"/>
+  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.015"/>
   <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.002"/>
-  <system-out><![CDATA[09:33:09.821 [Test worker] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
+  <system-out><![CDATA[15:18:34.959 [Test worker] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
