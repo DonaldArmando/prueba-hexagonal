@@ -6,7 +6,6 @@ import co.com.parqueadero.core.repositorio.IngresarMoto;
 import co.com.parqueadero.validaciones.exepciones.ExcepcionDuplicidad;
 import reactor.core.publisher.Mono;
 
-import java.time.LocalDateTime;
 
 public class RegistrarMoto {
 
@@ -15,25 +14,28 @@ public class RegistrarMoto {
     private final IngresarMoto ingresarMoto;
     private final ExistenciaVehiculo existenciaVehiculo;
 
+    public static String getLaMotoAunNoSeLiquida() {
+<span class="fc" id="L18">        return LA_MOTO_AUN_NO_SE_LIQUIDA;</span>
+    }
 
-<span class="fc" id="L19">    public RegistrarMoto(IngresarMoto ingresarMoto, ExistenciaVehiculo existenciaVehiculo) {</span>
-<span class="fc" id="L20">        this.ingresarMoto = ingresarMoto;</span>
-<span class="fc" id="L21">        this.existenciaVehiculo = existenciaVehiculo;</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L21">    public RegistrarMoto(IngresarMoto ingresarMoto, ExistenciaVehiculo existenciaVehiculo) {</span>
+<span class="fc" id="L22">        this.ingresarMoto = ingresarMoto;</span>
+<span class="fc" id="L23">        this.existenciaVehiculo = existenciaVehiculo;</span>
+<span class="fc" id="L24">    }</span>
 
     public Mono&lt;Moto&gt; ejecutar(Moto moto) {
-<span class="fc" id="L25">        return this.validarExistenciaPrevia(moto.getPlaca())</span>
-<span class="fc" id="L26">                .map(valor -&gt; moto)</span>
-<span class="fc" id="L27">                .flatMap(ingresarMoto::ingresarMoto);</span>
+<span class="fc" id="L27">        return this.validarExistenciaPrevia(moto.getPlaca())</span>
+<span class="fc" id="L28">                .map(valor -&gt; moto)</span>
+<span class="fc" id="L29">                .flatMap(ingresarMoto::ingresarMoto);</span>
     }
 
     private Mono&lt;Boolean&gt; validarExistenciaPrevia(String placa) {
-<span class="fc" id="L31">        return this.existenciaVehiculo.existenciaVehiculo(placa)</span>
-<span class="fc" id="L32">                .map(existe -&gt; {</span>
-<span class="pc bpc" id="L33" title="1 of 2 branches missed.">                    if (existe) {</span>
-<span class="nc" id="L34">                        throw new ExcepcionDuplicidad(LA_MOTO_AUN_NO_SE_LIQUIDA);</span>
+<span class="fc" id="L33">        return this.existenciaVehiculo.existenciaVehiculo(placa)</span>
+<span class="fc" id="L34">                .map(existe -&gt; {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">                    if (existe) {</span>
+<span class="fc" id="L36">                        throw new ExcepcionDuplicidad(LA_MOTO_AUN_NO_SE_LIQUIDA);</span>
                     }
-<span class="fc" id="L36">                    return existe;</span>
+<span class="fc" id="L38">                    return existe;</span>
                 });
     }
 
