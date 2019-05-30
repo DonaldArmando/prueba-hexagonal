@@ -6,7 +6,6 @@ import co.com.parqueadero.core.repositorio.IngresarMoto;
 import co.com.parqueadero.validaciones.exepciones.ExcepcionDuplicidad;
 import reactor.core.publisher.Mono;
 
-import java.time.LocalDateTime;
 
 public class RegistrarMoto {
 
@@ -15,6 +14,9 @@ public class RegistrarMoto {
     private final IngresarMoto ingresarMoto;
     private final ExistenciaVehiculo existenciaVehiculo;
 
+    public static String getLaMotoAunNoSeLiquida() {
+        return LA_MOTO_AUN_NO_SE_LIQUIDA;
+    }
 
     public RegistrarMoto(IngresarMoto ingresarMoto, ExistenciaVehiculo existenciaVehiculo) {
         this.ingresarMoto = ingresarMoto;

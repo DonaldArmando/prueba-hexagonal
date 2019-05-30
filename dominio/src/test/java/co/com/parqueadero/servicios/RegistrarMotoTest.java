@@ -5,6 +5,7 @@ import co.com.parqueadero.core.modelos.Moto;
 import co.com.parqueadero.core.repositorio.ExistenciaVehiculo;
 import co.com.parqueadero.core.repositorio.IngresarMoto;
 import co.com.parqueadero.core.servicios.RegistrarMoto;
+import co.com.parqueadero.validaciones.exepciones.ExcepcionDuplicidad;
 import org.junit.Test;
 import org.mockito.Mockito;
 import reactor.core.publisher.Mono;
@@ -19,13 +20,12 @@ public class RegistrarMotoTest {
 
     @Test
     public void ejecutarExitosoCuandoNoExistePlacaRegistrada() {
-
         // Arrange
         Moto moto = new MotoTestDataBuilder().build();
 
         IngresarMoto ingresarMoto = Mockito.mock(IngresarMoto.class);
-        ExistenciaVehiculo existenciaVehiculo = Mockito.mock(ExistenciaVehiculo .class);
-        RegistrarMoto registrarMoto = new RegistrarMoto(ingresarMoto,existenciaVehiculo);
+        ExistenciaVehiculo existenciaVehiculo = Mockito.mock(ExistenciaVehiculo.class);
+        RegistrarMoto registrarMoto = new RegistrarMoto(ingresarMoto, existenciaVehiculo);
 
         when(existenciaVehiculo.existenciaVehiculo(anyString()))
                 .thenReturn(Mono.just(Boolean.FALSE));
@@ -33,16 +33,55 @@ public class RegistrarMotoTest {
         when(ingresarMoto.ingresarMoto(any(Moto.class)))
                 .thenReturn(Mono.just(moto));
 
-
         // Act
         Mono<Moto> result = registrarMoto.ejecutar(moto);
 
         //Assert
         StepVerifier.create(result).expectNext(moto).verifyComplete();
+    }
 
+    @Test
+    public void ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcion() {
+        // Arrange
+        Moto moto = new MotoTestDataBuilder().build();
 
+        IngresarMoto ingresarMoto = Mockito.mock(IngresarMoto.class);
+        ExistenciaVehiculo existenciaVehiculo = Mockito.mock(ExistenciaVehiculo.class);
+        RegistrarMoto registrarMoto = new RegistrarMoto(ingresarMoto, existenciaVehiculo);
 
+        when(existenciaVehiculo.existenciaVehiculo(anyString()))
+                .thenReturn(Mono.just(Boolean.TRUE));
 
+        when(ingresarMoto.ingresarMoto(any(Moto.class)))
+                .thenReturn(Mono.just(moto));
+
+        // Act
+        Mono<Moto> result = registrarMoto.ejecutar(moto);
+
+        //Assert
+        StepVerifier.create(result).expectError(ExcepcionDuplicidad.class).verify();
+    }
+
+    @Test
+    public void ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcionMensaje() {
+        // Arrange
+        Moto moto = new MotoTestDataBuilder().build();
+
+        IngresarMoto ingresarMoto = Mockito.mock(IngresarMoto.class);
+        ExistenciaVehiculo existenciaVehiculo = Mockito.mock(ExistenciaVehiculo.class);
+        RegistrarMoto registrarMoto = new RegistrarMoto(ingresarMoto, existenciaVehiculo);
+
+        when(existenciaVehiculo.existenciaVehiculo(anyString()))
+                .thenReturn(Mono.just(Boolean.TRUE));
+
+        when(ingresarMoto.ingresarMoto(any(Moto.class)))
+                .thenReturn(Mono.just(moto));
+
+        // Act
+        Mono<Moto> result = registrarMoto.ejecutar(moto);
+
+        //Assert
+        StepVerifier.create(result).expectErrorMessage(RegistrarMoto.getLaMotoAunNoSeLiquida()).verify();
     }
 
 

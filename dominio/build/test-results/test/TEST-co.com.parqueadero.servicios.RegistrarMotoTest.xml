@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.parqueadero.servicios.RegistrarMotoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-05-28T19:37:50" hostname="DONALD-TORRES" time="4.149">
+<testsuite name="co.com.parqueadero.servicios.RegistrarMotoTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-30T18:08:08" hostname="DONALD-TORRES" time="0.048">
   <properties/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistrada" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="4.149"/>
-  <system-out><![CDATA[14:37:54.209 [Test worker] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
-]]></system-out>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistrada" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.045"/>
+  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.001"/>
+  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
