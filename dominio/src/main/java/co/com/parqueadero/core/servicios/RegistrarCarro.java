@@ -14,6 +14,9 @@ public class RegistrarCarro {
     private final IngresarCarro ingresarCarro;
     private final ExistenciaVehiculo existenciaVehiculo;
 
+    public static String getElCarroAunNoSeLiquida() {
+        return EL_CARRO_AUN_NO_SE_LIQUIDA;
+    }
 
     public RegistrarCarro(IngresarCarro ingresarCarro, ExistenciaVehiculo existenciaVehiculo) {
         this.ingresarCarro = ingresarCarro;

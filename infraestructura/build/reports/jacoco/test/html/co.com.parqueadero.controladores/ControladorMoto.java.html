@@ -20,10 +20,9 @@ public class ControladorMoto {
 <span class="fc" id="L20">        this.manejadorIngresarMoto = manejadorIngresarMoto;</span>
 <span class="fc" id="L21">    }</span>
 
-
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono&lt;Moto&gt; registrarMoto(@RequestBody MotoDTO motoDTO) {
-<span class="fc" id="L26">        return this.manejadorIngresarMoto.ejecutar(motoDTO);</span>
+<span class="fc" id="L25">        return this.manejadorIngresarMoto.ejecutar(motoDTO);</span>
     }
 
 }

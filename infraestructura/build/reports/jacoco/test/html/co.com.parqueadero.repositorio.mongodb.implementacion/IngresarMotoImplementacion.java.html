@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
 @Repository
-public class IngresarMotoImplementacion implements IngresarMoto, ExistenciaVehiculo {
+public class IngresarMotoImplementacion implements IngresarMoto{
 
 
     private final ReactiveMongoOperations reactiveMongoOperations;
@@ -30,10 +30,7 @@ public class IngresarMotoImplementacion implements IngresarMoto, ExistenciaVehic
 <span class="nc" id="L30">                .map(MotoConvertidor::registroMoto);</span>
     }
 
-    @Override
-    public Mono&lt;Boolean&gt; existenciaVehiculo(String placa) {
-<span class="nc" id="L35">        return Mono.just(Boolean.FALSE);</span>
-    }
+
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
