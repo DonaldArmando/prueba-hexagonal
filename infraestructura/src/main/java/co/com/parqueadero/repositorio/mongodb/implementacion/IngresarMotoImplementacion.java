@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
 @Repository
-public class IngresarMotoImplementacion implements IngresarMoto, ExistenciaVehiculo {
+public class IngresarMotoImplementacion implements IngresarMoto{
 
 
     private final ReactiveMongoOperations reactiveMongoOperations;
@@ -30,9 +30,6 @@ public class IngresarMotoImplementacion implements IngresarMoto, ExistenciaVehic
                 .map(MotoConvertidor::registroMoto);
     }
 
-    @Override
-    public Mono<Boolean> existenciaVehiculo(String placa) {
-        return Mono.just(Boolean.FALSE);
-    }
+
 
 }
