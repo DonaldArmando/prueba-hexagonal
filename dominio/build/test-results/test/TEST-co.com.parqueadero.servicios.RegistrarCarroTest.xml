@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.parqueadero.servicios.RegistrarCarroTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-30T16:39:13" hostname="DONALD-TORRES" time="3.161">
+<testsuite name="co.com.parqueadero.servicios.RegistrarCarroTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-30T18:08:06" hostname="DONALD-TORRES" time="2.684">
   <properties/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistrada" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="3.138"/>
-  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.018"/>
-  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.004"/>
-  <system-out><![CDATA[11:39:16.483 [Test worker] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistrada" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="2.669"/>
+  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.013"/>
+  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.002"/>
+  <system-out><![CDATA[13:08:08.550 [Test worker] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

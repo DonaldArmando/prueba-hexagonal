@@ -4,6 +4,7 @@ import co.com.parqueadero.TestDataBuilder.MotoTestDataBuilder;
 import co.com.parqueadero.core.modelos.Moto;
 import co.com.parqueadero.manejador.fabrica.dto.MotoDTO;
 import co.com.parqueadero.manejador.moto.ManejadorIngresarMoto;
+import co.com.parqueadero.testDataBuilder.MotoDTOTestDataBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -22,9 +23,10 @@ public class ControladorMotoTestIntegracion {
 
 
     @Test
-    public void registrarVehiculoIntegracion() {
+    public void registrarVehiculoIntegracionMoto() {
 
         //Arrange
+        MotoDTO motoDTO = new MotoDTOTestDataBuilder().build();
         Moto moto = new MotoTestDataBuilder().build();
 
         ManejadorIngresarMoto manejadorIngresarMoto = Mockito.mock(ManejadorIngresarMoto.class);
@@ -41,7 +43,8 @@ public class ControladorMotoTestIntegracion {
                 .post()
                 .uri("/motos")
                 .contentType(MediaType.APPLICATION_JSON)
-                .syncBody(moto).exchange();
+                .syncBody(motoDTO)
+                .exchange();
 
 
         //Assert

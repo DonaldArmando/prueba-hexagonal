@@ -17,13 +17,13 @@ public class ControladorCarro {
 
     private ManejadorIngresarCarro manejadorIngresarCarro;
 
-<span class="nc" id="L20">    public ControladorCarro(ManejadorIngresarCarro manejadorIngresarCarro) {</span>
-<span class="nc" id="L21">        this.manejadorIngresarCarro = manejadorIngresarCarro;</span>
-<span class="nc" id="L22">    }</span>
+<span class="fc" id="L20">    public ControladorCarro(ManejadorIngresarCarro manejadorIngresarCarro) {</span>
+<span class="fc" id="L21">        this.manejadorIngresarCarro = manejadorIngresarCarro;</span>
+<span class="fc" id="L22">    }</span>
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono&lt;Carro&gt; registrarCarro(@RequestBody CarroDTO carroDTO) {
-<span class="nc" id="L26">        return this.manejadorIngresarCarro.ejecutar(carroDTO);</span>
+<span class="fc" id="L26">        return this.manejadorIngresarCarro.ejecutar(carroDTO);</span>
     }
 
 
