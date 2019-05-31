@@ -12,7 +12,7 @@ public class Registro<T> {
 
     @Id
     private String id;
-    private T registo;
+    private T registro;
     private VehiculoType tipo;
     private LocalDateTime fechaEntrada;
     private LocalDateTime fechaSalida;
@@ -22,9 +22,9 @@ public class Registro<T> {
     public Registro() {
     }
 
-    public Registro(String id, T registo, VehiculoType tipo, LocalDateTime fechaEntrada, LocalDateTime fechaSalida, Integer valorHora, Integer valorDia) {
+    public Registro(String id, T registro, VehiculoType tipo, LocalDateTime fechaEntrada, LocalDateTime fechaSalida, Integer valorHora, Integer valorDia) {
         this.id = id;
-        this.registo = registo;
+        this.registro = registro;
         this.tipo = tipo;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
@@ -36,7 +36,7 @@ public class Registro<T> {
     public String toString() {
         return "Registro{" +
                 "id='" + id + '\'' +
-                ", registo=" + registo +
+                ", registo=" + registro +
                 ", tipo=" + tipo +
                 ", fechaEntrada=" + fechaEntrada +
                 ", fechaSalida=" + fechaSalida +
@@ -51,7 +51,7 @@ public class Registro<T> {
         if (o == null || getClass() != o.getClass()) return false;
         Registro<?> registro = (Registro<?>) o;
         return Objects.equals(id, registro.id) &&
-                Objects.equals(registo, registro.registo) &&
+                Objects.equals(registro, registro.registro) &&
                 tipo == registro.tipo &&
                 Objects.equals(fechaEntrada, registro.fechaEntrada) &&
                 Objects.equals(fechaSalida, registro.fechaSalida) &&
@@ -61,7 +61,7 @@ public class Registro<T> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, registo, tipo, fechaEntrada, fechaSalida, valorHora, valorDia);
+        return Objects.hash(id, registro, tipo, fechaEntrada, fechaSalida, valorHora, valorDia);
     }
 
     public String getId() {
@@ -73,11 +73,11 @@ public class Registro<T> {
     }
 
     public T getRegisto() {
-        return registo;
+        return registro;
     }
 
     public void setRegisto(T registo) {
-        this.registo = registo;
+        this.registro = registo;
     }
 
     public VehiculoType getTipo() {

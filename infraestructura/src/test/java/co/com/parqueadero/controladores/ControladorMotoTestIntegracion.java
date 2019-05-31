@@ -3,7 +3,9 @@ package co.com.parqueadero.controladores;
 import co.com.parqueadero.TestDataBuilder.MotoTestDataBuilder;
 import co.com.parqueadero.core.modelos.Moto;
 import co.com.parqueadero.manejador.fabrica.dto.MotoDTO;
+import co.com.parqueadero.manejador.moto.ManejadorConsultarMoto;
 import co.com.parqueadero.manejador.moto.ManejadorIngresarMoto;
+import co.com.parqueadero.manejador.moto.ManejadorSalidaMoto;
 import co.com.parqueadero.testDataBuilder.MotoDTOTestDataBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,11 +32,18 @@ public class ControladorMotoTestIntegracion {
         Moto moto = new MotoTestDataBuilder().build();
 
         ManejadorIngresarMoto manejadorIngresarMoto = Mockito.mock(ManejadorIngresarMoto.class);
+        ManejadorConsultarMoto manejadorConsultarMoto = Mockito.mock(ManejadorConsultarMoto.class);
+        ManejadorSalidaMoto manejadorSalidaMoto = Mockito.mock(ManejadorSalidaMoto.class);
+
 
         when(manejadorIngresarMoto.ejecutar(any(MotoDTO.class))).thenReturn(Mono.just(moto));
 
         WebTestClient webTestClient = WebTestClient
-                .bindToController(new ControladorMoto(manejadorIngresarMoto))
+                .bindToController(new ControladorMoto(
+                        manejadorIngresarMoto,
+                        manejadorConsultarMoto,
+                        manejadorSalidaMoto
+                ))
                 .build();
 
 

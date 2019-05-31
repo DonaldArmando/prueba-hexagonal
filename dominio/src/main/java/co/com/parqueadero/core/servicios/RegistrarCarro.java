@@ -1,6 +1,8 @@
 package co.com.parqueadero.core.servicios;
 
 import co.com.parqueadero.core.modelos.Carro;
+import co.com.parqueadero.core.modelos.Moto;
+import co.com.parqueadero.core.modelos.Vehiculo;
 import co.com.parqueadero.core.repositorio.ExistenciaVehiculo;
 import co.com.parqueadero.core.repositorio.IngresarCarro;
 import co.com.parqueadero.validaciones.exepciones.ExcepcionDuplicidad;
@@ -24,6 +26,7 @@ public class RegistrarCarro {
     }
 
     public Mono<Carro> ejecutar(Carro carro) {
+
         return this.validarExistenciaPrevia(carro.getPlaca())
                 .map(valor -> carro)
                 .flatMap(ingresarCarro::ingresarCarro);

@@ -18,7 +18,7 @@ public class ManejadorIngresarCarro {
     }
 
     public Mono<Carro> ejecutar(CarroDTO carroDTO) {
-        Carro carro = this.carroFabrica.motoDTOMoto(carroDTO);
+        Carro carro = this.carroFabrica.carroDTOCarro(carroDTO);
         return this.registrarCarro.ejecutar(carro);
     }
 

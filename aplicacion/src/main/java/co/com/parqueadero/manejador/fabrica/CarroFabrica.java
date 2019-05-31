@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class CarroFabrica {
 
-    public Carro motoDTOMoto(CarroDTO carroDTO) {
+    public Carro carroDTOCarro(CarroDTO carroDTO) {
         return new Carro(
                 carroDTO.getPlaca(),
                 LocalDateTime.now(),
