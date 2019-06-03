@@ -29,7 +29,9 @@ public class ConsultarCarroImplementacion implements ConsultarCarro {
                 .where(Constantes.REGISTRO_PLACA)
                 .is(placa)
                 .and(Constantes.TIPO)
-                .is(VehiculoType.CARRO);
+                .is(VehiculoType.CARRO)
+                .and(Constantes.FECHA_SALIDA)
+                .is(null);
         Query query = Query.query(criteria);
         return this.reactiveMongoOperations
                 .findOne(query, Registro.class)

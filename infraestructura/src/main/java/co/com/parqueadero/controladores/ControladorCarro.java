@@ -6,13 +6,16 @@ import co.com.parqueadero.manejador.carro.ManejadorIngresarCarro;
 import co.com.parqueadero.manejador.carro.ManejadorSalidaCarro;
 import co.com.parqueadero.manejador.fabrica.dto.CarroDTO;
 import co.com.parqueadero.manejador.fabrica.dto.SalidaDTO;
+import co.com.parqueadero.repositorio.mongodb.modelo.VehiculoData;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.math.BigInteger;
+
 
 @RestController
-@RequestMapping(path = "/carros", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/carros")
 public class ControladorCarro {
 
     private final ManejadorIngresarCarro manejadorIngresarCarro;

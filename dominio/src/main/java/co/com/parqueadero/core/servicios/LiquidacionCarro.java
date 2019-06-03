@@ -4,6 +4,7 @@ import co.com.parqueadero.core.modelos.Carro;
 import co.com.parqueadero.core.repositorio.ConsultarCarro;
 import co.com.parqueadero.core.repositorio.ExistenciaVehiculo;
 import co.com.parqueadero.core.repositorio.SalidaCarro;
+import co.com.parqueadero.validaciones.exepciones.ExcepcionDuplicidad;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
@@ -14,9 +15,16 @@ import java.time.LocalDateTime;
 
 public class LiquidacionCarro {
 
+    private static final String EL_CARRO_NO_SE_HA_INGRESADO = "El carro no se ha ingresado";
+
+
     private final ExistenciaVehiculo existenciaVehiculo;
     private final SalidaCarro salidaMoto;
     private final ConsultarCarro consultarMoto;
+
+    public static String getElCarroNoSeHaIngresado() {
+        return EL_CARRO_NO_SE_HA_INGRESADO;
+    }
 
     public LiquidacionCarro(
             ExistenciaVehiculo existenciaVehiculo,
@@ -28,16 +36,29 @@ public class LiquidacionCarro {
         this.consultarMoto = consultarCarro;
     }
 
-    public Mono<Tuple2<Carro, BigInteger>> darSalidaMoto(String placa) {
-        return this.consultarMoto.consultarCarro(placa)
+    public Mono<Tuple2<Carro, BigInteger>> darSalidaCarro(String placa) {
+        return  this.validarExistenciaPrevia(placa)
+                .flatMap(ignore -> this.consultarMoto.consultarCarro(placa))
                 .flatMap(this::registrarSalidaCarro)
                 .map(this::carroLiquidada);
+    }
+
+    private Mono<Boolean> validarExistenciaPrevia(String placa) {
+        return this.existenciaVehiculo.existenciaVehiculo(placa)
+                .map(existe -> {
+                    if (existe) {
+                        return existe;
+                    }
+                    throw new ExcepcionDuplicidad(EL_CARRO_NO_SE_HA_INGRESADO);
+
+                });
     }
 
     private Mono<Carro> registrarSalidaCarro(Carro carro) {
         return this.salidaMoto.salidaCarro(
                 carro.getPlaca(),
-                carro.getFechaSalida());
+                LocalDateTime.now()
+        );
     }
 
     private Tuple2<Carro, BigInteger> carroLiquidada(Carro carro) {
@@ -78,6 +99,7 @@ public class LiquidacionCarro {
     }
 
     private Double calcularDecimalesHoraPorDias(Double horasPorDia) {
+
         return horasPorDia - horasPorDia.intValue();
     }
 

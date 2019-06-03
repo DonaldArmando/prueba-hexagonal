@@ -1,31 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControladorCarro.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">infraestructura</a> &gt; <a href="index.source.html" class="el_package">co.com.parqueadero.controladores</a> &gt; <span class="el_source">ControladorCarro.java</span></div><h1>ControladorCarro.java</h1><pre class="source lang-java linenums">package co.com.parqueadero.controladores;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControladorCarro.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">infraestructura</a> &gt; <a href="index.source.html" class="el_package">co.com.parqueadero.controladores</a> &gt; <span class="el_source">ControladorCarro.java</span></div><h1>ControladorCarro.java</h1><pre class="source lang-java linenums">package co.com.parqueadero.controladores;
 
 import co.com.parqueadero.core.modelos.Carro;
+import co.com.parqueadero.manejador.carro.ManejadorConsultarCarro;
 import co.com.parqueadero.manejador.carro.ManejadorIngresarCarro;
+import co.com.parqueadero.manejador.carro.ManejadorSalidaCarro;
 import co.com.parqueadero.manejador.fabrica.dto.CarroDTO;
+import co.com.parqueadero.manejador.fabrica.dto.SalidaDTO;
+import co.com.parqueadero.repositorio.mongodb.modelo.VehiculoData;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
+
+import java.math.BigInteger;
 
 
 @RestController
-@RequestMapping(path = &quot;/carros&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = &quot;/carros&quot;)
 public class ControladorCarro {
 
-    private ManejadorIngresarCarro manejadorIngresarCarro;
+    private final ManejadorIngresarCarro manejadorIngresarCarro;
+    private final ManejadorConsultarCarro manejadorConsultarCarro;
+    private final ManejadorSalidaCarro manejadorSalidaCarro;
 
-<span class="fc" id="L20">    public ControladorCarro(ManejadorIngresarCarro manejadorIngresarCarro) {</span>
-<span class="fc" id="L21">        this.manejadorIngresarCarro = manejadorIngresarCarro;</span>
-<span class="fc" id="L22">    }</span>
+    public ControladorCarro(
+            ManejadorIngresarCarro manejadorIngresarCarro,
+            ManejadorConsultarCarro manejadorConsultarCarro,
+            ManejadorSalidaCarro manejadorSalidaCarro
+<span class="fc" id="L29">    ) {</span>
+<span class="fc" id="L30">        this.manejadorIngresarCarro = manejadorIngresarCarro;</span>
+<span class="fc" id="L31">        this.manejadorConsultarCarro = manejadorConsultarCarro;</span>
+<span class="fc" id="L32">        this.manejadorSalidaCarro = manejadorSalidaCarro;</span>
+<span class="fc" id="L33">    }</span>
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono&lt;Carro&gt; registrarCarro(@RequestBody CarroDTO carroDTO) {
-<span class="fc" id="L26">        return this.manejadorIngresarCarro.ejecutar(carroDTO);</span>
+<span class="fc" id="L37">        return this.manejadorIngresarCarro.ejecutar(carroDTO);</span>
     }
 
+
+    @GetMapping(path = &quot;/{placa}&quot;)
+    public Mono&lt;Carro&gt; consultarCarro(@PathVariable String placa) {
+<span class="nc" id="L43">        return this.manejadorConsultarCarro.ejecutar(placa);</span>
+    }
+
+    @GetMapping(path = &quot;/{placa}/salida&quot;)
+    public Mono&lt;SalidaDTO&gt; sacarCarro(@PathVariable String placa) {
+<span class="nc" id="L48">        return this.manejadorSalidaCarro.ejecutar(placa);</span>
+    }
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

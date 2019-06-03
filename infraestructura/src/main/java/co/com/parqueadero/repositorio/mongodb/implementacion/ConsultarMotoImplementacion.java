@@ -32,7 +32,9 @@ public class ConsultarMotoImplementacion implements ConsultarMoto {
                 .where(Constantes.REGISTRO_PLACA)
                 .is(placa)
                 .and(Constantes.TIPO)
-                .is(VehiculoType.MOTO);
+                .is(VehiculoType.MOTO)
+                .and(Constantes.FECHA_SALIDA)
+                .is(null);
         Query query = Query.query(criteria);
         return this.reactiveMongoOperations
                 .findOne(query, Registro.class)

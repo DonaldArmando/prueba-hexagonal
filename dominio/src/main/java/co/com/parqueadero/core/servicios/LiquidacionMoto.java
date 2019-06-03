@@ -4,6 +4,7 @@ import co.com.parqueadero.core.modelos.Moto;
 import co.com.parqueadero.core.repositorio.ConsultarMoto;
 import co.com.parqueadero.core.repositorio.ExistenciaVehiculo;
 import co.com.parqueadero.core.repositorio.SalidaMoto;
+import co.com.parqueadero.validaciones.exepciones.ExcepcionDuplicidad;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
@@ -14,9 +15,16 @@ import java.time.LocalDateTime;
 
 public class LiquidacionMoto {
 
+
+    private static final String LA_MOTO_NO_SE_HA_INGRESADO = "La moto no se ha ingresado";
+
     private final ExistenciaVehiculo existenciaVehiculo;
     private final SalidaMoto salidaMoto;
     private final ConsultarMoto consultarMoto;
+
+    public static String getLaMotoNoSeHaIngresado() {
+        return LA_MOTO_NO_SE_HA_INGRESADO;
+    }
 
     public LiquidacionMoto(
             ExistenciaVehiculo existenciaVehiculo,
@@ -30,9 +38,21 @@ public class LiquidacionMoto {
     }
 
     public Mono<Tuple2<Moto, BigInteger>> darSalidaMoto(String placa) {
-        return this.consultarMoto.consultarMoto(placa)
+        return this.validarExistenciaPrevia(placa)
+                .flatMap(ignore -> this.consultarMoto.consultarMoto(placa))
                 .flatMap(this::registrarSalidaMoto)
                 .map(this::motoLiquidada);
+    }
+
+    private Mono<Boolean> validarExistenciaPrevia(String placa) {
+        return this.existenciaVehiculo.existenciaVehiculo(placa)
+                .map(existe -> {
+                    if (existe) {
+                        return existe;
+                    }
+                    throw new ExcepcionDuplicidad(LA_MOTO_NO_SE_HA_INGRESADO);
+
+                });
     }
 
     private Mono<Moto> registrarSalidaMoto(Moto moto) {

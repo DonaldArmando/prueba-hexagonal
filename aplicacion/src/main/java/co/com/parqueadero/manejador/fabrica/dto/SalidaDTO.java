@@ -12,4 +12,23 @@ public class SalidaDTO {
         this.registro = registro;
         this.valorSalida = valorSalida;
     }
+
+    public SalidaDTO() {
+    }
+
+    public Object getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(Object registro) {
+        this.registro = registro;
+    }
+
+    public BigInteger getValorSalida() {
+        return valorSalida;
+    }
+
+    public void setValorSalida(BigInteger valorSalida) {
+        this.valorSalida = valorSalida;
+    }
 }

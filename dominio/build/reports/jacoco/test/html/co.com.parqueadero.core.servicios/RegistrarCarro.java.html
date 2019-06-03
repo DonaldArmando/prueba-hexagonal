@@ -1,41 +1,90 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RegistrarCarro.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dominio</a> &gt; <a href="index.source.html" class="el_package">co.com.parqueadero.core.servicios</a> &gt; <span class="el_source">RegistrarCarro.java</span></div><h1>RegistrarCarro.java</h1><pre class="source lang-java linenums">package co.com.parqueadero.core.servicios;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RegistrarCarro.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dominio</a> &gt; <a href="index.source.html" class="el_package">co.com.parqueadero.core.servicios</a> &gt; <span class="el_source">RegistrarCarro.java</span></div><h1>RegistrarCarro.java</h1><pre class="source lang-java linenums">package co.com.parqueadero.core.servicios;
 
 import co.com.parqueadero.core.modelos.Carro;
+import co.com.parqueadero.core.repositorio.CantidadCarro;
 import co.com.parqueadero.core.repositorio.ExistenciaVehiculo;
 import co.com.parqueadero.core.repositorio.IngresarCarro;
+import co.com.parqueadero.validaciones.exepciones.ExcepcionDiaSemana;
 import co.com.parqueadero.validaciones.exepciones.ExcepcionDuplicidad;
+import co.com.parqueadero.validaciones.exepciones.ExcepcionMaximoCupos;
+import co.com.parqueadero.validaciones.utilidades.UtilidadFecha;
 import reactor.core.publisher.Mono;
+
+import java.time.DayOfWeek;
 
 
 public class RegistrarCarro {
 
     private static final String EL_CARRO_AUN_NO_SE_LIQUIDA = &quot;El carro aun no se liquida&quot;;
+    private static final String CUPO_MAXIMO_CARROS_OCUPADO = &quot;Cupo maximo de carros esta ocupado&quot;;
+    private static final String PARA_LAS_PLACAS_QUE_EMPIECEN_POR_A_SOLO_PUEDEN_INGRESAR_LOS_LUNES_Y_DOMINGOS = &quot;Para las placas que empicen por la letra a solo pueden ingresar los lunes y domingos&quot;;
 
     private final IngresarCarro ingresarCarro;
     private final ExistenciaVehiculo existenciaVehiculo;
+    private final CantidadCarro cantidadCarro;
+    private final UtilidadFecha utilidadFecha;
 
     public static String getElCarroAunNoSeLiquida() {
-<span class="fc" id="L18">        return EL_CARRO_AUN_NO_SE_LIQUIDA;</span>
+<span class="fc" id="L28">        return EL_CARRO_AUN_NO_SE_LIQUIDA;</span>
     }
 
-<span class="fc" id="L21">    public RegistrarCarro(IngresarCarro ingresarCarro, ExistenciaVehiculo existenciaVehiculo) {</span>
-<span class="fc" id="L22">        this.ingresarCarro = ingresarCarro;</span>
-<span class="fc" id="L23">        this.existenciaVehiculo = existenciaVehiculo;</span>
-<span class="fc" id="L24">    }</span>
+    public static String getCupoMaximoCarrosOcupado() {
+<span class="fc" id="L32">        return CUPO_MAXIMO_CARROS_OCUPADO;</span>
+    }
+
+    public static String getParaLasPlacasQueEmpiecenPorASoloPuedenIngresarLosLunesYDomingos() {
+<span class="fc" id="L36">        return PARA_LAS_PLACAS_QUE_EMPIECEN_POR_A_SOLO_PUEDEN_INGRESAR_LOS_LUNES_Y_DOMINGOS;</span>
+    }
+
+    public RegistrarCarro(
+            IngresarCarro ingresarCarro,
+            ExistenciaVehiculo existenciaVehiculo,
+            CantidadCarro cantidadCarro,
+            UtilidadFecha utilidadFecha
+<span class="fc" id="L44">    ) {</span>
+<span class="fc" id="L45">        this.ingresarCarro = ingresarCarro;</span>
+<span class="fc" id="L46">        this.existenciaVehiculo = existenciaVehiculo;</span>
+<span class="fc" id="L47">        this.cantidadCarro = cantidadCarro;</span>
+<span class="fc" id="L48">        this.utilidadFecha = utilidadFecha;</span>
+<span class="fc" id="L49">    }</span>
 
     public Mono&lt;Carro&gt; ejecutar(Carro carro) {
-<span class="fc" id="L27">        return this.validarExistenciaPrevia(carro.getPlaca())</span>
-<span class="fc" id="L28">                .map(valor -&gt; carro)</span>
-<span class="fc" id="L29">                .flatMap(ingresarCarro::ingresarCarro);</span>
+<span class="fc" id="L52">        return this.validarExistenciaPrevia(carro.getPlaca())</span>
+<span class="fc" id="L53">                .flatMap(ignore -&gt; this.validarCantidadPermitida())</span>
+<span class="fc" id="L54">                .flatMap(ignore -&gt; this.validarPrimeraLetraPlaca(carro.getPlaca()))</span>
+<span class="fc" id="L55">                .map(valor -&gt; carro)</span>
+<span class="fc" id="L56">                .flatMap(ingresarCarro::ingresarCarro);</span>
     }
 
     private Mono&lt;Boolean&gt; validarExistenciaPrevia(String placa) {
-<span class="fc" id="L33">        return this.existenciaVehiculo.existenciaVehiculo(placa)</span>
-<span class="fc" id="L34">                .map(existe -&gt; {</span>
-<span class="fc bfc" id="L35" title="All 2 branches covered.">                    if (existe) {</span>
-<span class="fc" id="L36">                        throw new ExcepcionDuplicidad(EL_CARRO_AUN_NO_SE_LIQUIDA);</span>
+<span class="fc" id="L60">        return this.existenciaVehiculo.existenciaVehiculo(placa)</span>
+<span class="fc" id="L61">                .map(existe -&gt; {</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">                    if (existe) {</span>
+<span class="fc" id="L63">                        throw new ExcepcionDuplicidad(EL_CARRO_AUN_NO_SE_LIQUIDA);</span>
                     }
-<span class="fc" id="L38">                    return existe;</span>
+<span class="fc" id="L65">                    return existe;</span>
+                });
+    }
+
+    private Mono&lt;Boolean&gt; validarPrimeraLetraPlaca(String placa) {
+<span class="fc" id="L70">        Character primeraLetra = placa.charAt(0);</span>
+<span class="fc" id="L71">        DayOfWeek diaDeLaSemana = utilidadFecha.fechaActual().getDayOfWeek();</span>
+<span class="fc bfc" id="L72" title="All 4 branches covered.">        Boolean validarLetra = primeraLetra.equals('a') || primeraLetra.equals('A');</span>
+<span class="fc bfc" id="L73" title="All 4 branches covered.">        Boolean validarDiaDeLaSemana = diaDeLaSemana.equals(DayOfWeek.MONDAY) || diaDeLaSemana.equals(DayOfWeek.SUNDAY);</span>
+<span class="fc bfc" id="L74" title="All 4 branches covered.">        if (!validarDiaDeLaSemana &amp;&amp; validarLetra) {</span>
+<span class="fc" id="L75">            throw new ExcepcionDiaSemana(PARA_LAS_PLACAS_QUE_EMPIECEN_POR_A_SOLO_PUEDEN_INGRESAR_LOS_LUNES_Y_DOMINGOS);</span>
+        }
+<span class="fc" id="L77">        return Mono.just(Boolean.TRUE);</span>
+
+    }
+
+    private Mono&lt;Boolean&gt; validarCantidadPermitida() {
+<span class="fc" id="L82">        return this.cantidadCarro.cantidadCarro()</span>
+<span class="fc" id="L83">                .map(cantidad -&gt; {</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">                    if (cantidad &gt; 20) {</span>
+<span class="fc" id="L85">                        throw new ExcepcionMaximoCupos(CUPO_MAXIMO_CARROS_OCUPADO);</span>
+                    }
+<span class="fc" id="L87">                    return Boolean.TRUE;</span>
                 });
     }
 

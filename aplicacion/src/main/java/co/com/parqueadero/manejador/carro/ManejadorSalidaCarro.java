@@ -20,7 +20,7 @@ public class ManejadorSalidaCarro {
     }
 
     public Mono<SalidaDTO> ejecutar(String placa) {
-        return this.liquidacionCarro.darSalidaMoto(placa)
+        return this.liquidacionCarro.darSalidaCarro(placa)
                 .map(carroSalida -> salidaDTOConvertidor
                         .salidaDTO(carroSalida.getT1(), carroSalida.getT2())
                 );

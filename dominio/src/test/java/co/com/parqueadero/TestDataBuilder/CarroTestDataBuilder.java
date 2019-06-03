@@ -16,7 +16,7 @@ public class CarroTestDataBuilder {
 
 
     public CarroTestDataBuilder() {
-        this.placa = "ABC 123";
+        this.placa = "BBC 123";
         this.fechaEntrada = LocalDateTime.of(1992, 10, 20, 10, 20);
         this.fechaSalida = null;
         this.valorHora = 1000;

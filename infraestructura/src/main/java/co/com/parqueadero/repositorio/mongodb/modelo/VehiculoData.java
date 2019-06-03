@@ -24,6 +24,17 @@ public class VehiculoData {
     }
 
 
+    @Override
+    public String toString() {
+        return "VehiculoData{" +
+                "id='" + id + '\'' +
+                ", placa='" + placa + '\'' +
+                ", fechaEntrada=" + fechaEntrada +
+                ", fechaSalida=" + fechaSalida +
+                ", valorHora=" + valorHora +
+                ", valorDia=" + valorDia +
+                '}';
+    }
 
     public String getId() {
         return id;

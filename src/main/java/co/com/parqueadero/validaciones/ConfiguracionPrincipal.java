@@ -12,6 +12,7 @@ import co.com.parqueadero.manejador.fabrica.SalidaDTOConvertidor;
 import co.com.parqueadero.manejador.moto.ManejadorConsultarMoto;
 import co.com.parqueadero.manejador.moto.ManejadorIngresarMoto;
 import co.com.parqueadero.manejador.moto.ManejadorSalidaMoto;
+import co.com.parqueadero.validaciones.utilidades.UtilidadFecha;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,13 +27,20 @@ public class ConfiguracionPrincipal {
 
     @Bean
     public RegistrarMoto registrarMoto(IngresarMoto ingresarMoto,
-                                       ExistenciaVehiculo existenciaVehiculo) {
-        return new RegistrarMoto(ingresarMoto, existenciaVehiculo);
+                                       ExistenciaVehiculo existenciaVehiculo,
+                                       CantidadMoto cantidadMoto,
+                                       UtilidadFecha utilidadFecha) {
+        return new RegistrarMoto(
+                ingresarMoto,
+                existenciaVehiculo,
+                cantidadMoto,
+                utilidadFecha
+        );
     }
 
     @Bean
-    public MotoFabrica motoFabrica() {
-        return new MotoFabrica();
+    public MotoFabrica motoFabrica(UtilidadFecha utilidadFecha) {
+        return new MotoFabrica(utilidadFecha);
     }
 
 
@@ -45,13 +53,20 @@ public class ConfiguracionPrincipal {
 
     @Bean
     public RegistrarCarro registrarCarro(ExistenciaVehiculo existenciaVehiculo,
-                                         IngresarCarro ingresarCarro) {
-        return new RegistrarCarro(ingresarCarro, existenciaVehiculo);
+                                         IngresarCarro ingresarCarro,
+                                         CantidadCarro cantidadCarro,
+                                         UtilidadFecha utilidadFecha) {
+        return new RegistrarCarro(
+                ingresarCarro,
+                existenciaVehiculo,
+                cantidadCarro,
+                utilidadFecha
+        );
     }
 
     @Bean
-    public CarroFabrica carroFabrica() {
-        return new CarroFabrica();
+    public CarroFabrica carroFabrica(UtilidadFecha utilidadFecha) {
+        return new CarroFabrica(utilidadFecha);
     }
 
 
@@ -120,6 +135,11 @@ public class ConfiguracionPrincipal {
         return new SalidaDTOConvertidor();
     }
 
+
+    @Bean
+    public UtilidadFecha utilidadFecha() {
+        return new UtilidadFecha();
+    }
 }
 
 

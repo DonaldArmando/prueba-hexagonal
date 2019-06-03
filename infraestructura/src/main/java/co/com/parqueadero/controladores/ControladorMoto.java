@@ -12,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-import java.math.BigInteger;
 
 
 @RestController
@@ -46,7 +45,7 @@ public class ControladorMoto {
 
     @GetMapping(path = "/{placa}/salida")
     public Mono<SalidaDTO> sacarMoto(@PathVariable String placa) {
-        return Mono.just(new SalidaDTO(placa, BigInteger.ONE)); //this.manejadorSalidaMoto.ejecutar(placa);
+        return this.manejadorSalidaMoto.ejecutar(placa);
     }
 
 
