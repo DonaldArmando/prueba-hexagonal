@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LiquidacionCarro.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dominio</a> &gt; <a href="index.source.html" class="el_package">co.com.parqueadero.core.servicios</a> &gt; <span class="el_source">LiquidacionCarro.java</span></div><h1>LiquidacionCarro.java</h1><pre class="source lang-java linenums">package co.com.parqueadero.core.servicios;
+
+import co.com.parqueadero.core.modelos.Carro;
+import co.com.parqueadero.core.repositorio.ConsultarCarro;
+import co.com.parqueadero.core.repositorio.ExistenciaVehiculo;
+import co.com.parqueadero.core.repositorio.SalidaCarro;
+import co.com.parqueadero.validaciones.exepciones.ExcepcionDuplicidad;
+import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
+import reactor.util.function.Tuples;
+
+import java.math.BigInteger;
+import java.time.Duration;
+import java.time.LocalDateTime;
+
+public class LiquidacionCarro {
+
+    private static final String EL_CARRO_NO_SE_HA_INGRESADO = &quot;El carro no se ha ingresado&quot;;
+
+
+    private final ExistenciaVehiculo existenciaVehiculo;
+    private final SalidaCarro salidaMoto;
+    private final ConsultarCarro consultarMoto;
+
+    public static String getElCarroNoSeHaIngresado() {
+<span class="fc" id="L26">        return EL_CARRO_NO_SE_HA_INGRESADO;</span>
+    }
+
+    public LiquidacionCarro(
+            ExistenciaVehiculo existenciaVehiculo,
+            SalidaCarro salidaCarro,
+            ConsultarCarro consultarCarro
+<span class="fc" id="L33">    ) {</span>
+<span class="fc" id="L34">        this.existenciaVehiculo = existenciaVehiculo;</span>
+<span class="fc" id="L35">        this.salidaMoto = salidaCarro;</span>
+<span class="fc" id="L36">        this.consultarMoto = consultarCarro;</span>
+<span class="fc" id="L37">    }</span>
+
+    public Mono&lt;Tuple2&lt;Carro, BigInteger&gt;&gt; darSalidaCarro(String placa) {
+<span class="fc" id="L40">        return  this.validarExistenciaPrevia(placa)</span>
+<span class="fc" id="L41">                .flatMap(ignore -&gt; this.consultarMoto.consultarCarro(placa))</span>
+<span class="fc" id="L42">                .flatMap(this::registrarSalidaCarro)</span>
+<span class="fc" id="L43">                .map(this::carroLiquidada);</span>
+    }
+
+    private Mono&lt;Boolean&gt; validarExistenciaPrevia(String placa) {
+<span class="fc" id="L47">        return this.existenciaVehiculo.existenciaVehiculo(placa)</span>
+<span class="fc" id="L48">                .map(existe -&gt; {</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">                    if (existe) {</span>
+<span class="fc" id="L50">                        return existe;</span>
+                    }
+<span class="fc" id="L52">                    throw new ExcepcionDuplicidad(EL_CARRO_NO_SE_HA_INGRESADO);</span>
+
+                });
+    }
+
+    private Mono&lt;Carro&gt; registrarSalidaCarro(Carro carro) {
+<span class="fc" id="L58">        return this.salidaMoto.salidaCarro(</span>
+<span class="fc" id="L59">                carro.getPlaca(),</span>
+<span class="fc" id="L60">                LocalDateTime.now()</span>
+        );
+    }
+
+    private Tuple2&lt;Carro, BigInteger&gt; carroLiquidada(Carro carro) {
+<span class="fc" id="L65">        return Tuples.of(</span>
+                carro,
+<span class="fc" id="L67">                calcularValorCarro(</span>
+<span class="fc" id="L68">                        carro.getFechaEntrada(),</span>
+<span class="fc" id="L69">                        carro.getFechaSalida(),</span>
+<span class="fc" id="L70">                        carro.getValorHora(),</span>
+<span class="fc" id="L71">                        carro.getValorDia())</span>
+        );
+    }
+
+    private BigInteger calcularValorCarro(
+            LocalDateTime horaIngreso,
+            LocalDateTime horaSalida,
+            Integer valorHora,
+            Integer valorDia
+    ) {
+<span class="fc" id="L81">        BigInteger valor = BigInteger.ZERO;</span>
+<span class="fc" id="L82">        Duration duration = Duration.between(horaIngreso, horaSalida);</span>
+<span class="fc" id="L83">        Double horas = calcularHorasPorDias(duration.getSeconds());</span>
+<span class="fc" id="L84">        Double decimales = calcularDecimalesHoraPorDias(horas);</span>
+<span class="fc" id="L85">        valor = valor.add(BigInteger.valueOf(horas.intValue() * valorDia));</span>
+
+<span class="fc bfc" id="L87" title="All 2 branches covered.">        if (decimales * 24 &gt;= 9) {</span>
+<span class="fc" id="L88">            valor = valor.add(BigInteger.valueOf(valorDia));</span>
+        } else {
+<span class="fc" id="L90">            valor = valor.add(BigInteger.valueOf(Double.valueOf(decimales * 24).intValue() * valorHora));</span>
+        }
+
+<span class="fc" id="L93">        return valor;</span>
+    }
+
+
+    private Double calcularHorasPorDias(Long segundos) {
+<span class="fc" id="L98">        return (Math.ceil(new Double(segundos) / 3600)) / 24;</span>
+    }
+
+    private Double calcularDecimalesHoraPorDias(Double horasPorDia) {
+
+<span class="fc" id="L103">        return horasPorDia - horasPorDia.intValue();</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

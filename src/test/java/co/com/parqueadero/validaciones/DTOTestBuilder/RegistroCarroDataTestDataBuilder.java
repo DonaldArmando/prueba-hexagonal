@@ -18,7 +18,7 @@ public class RegistroCarroDataTestDataBuilder {
 
     public RegistroCarroDataTestDataBuilder() {
         this.id = null;
-        this.registro = new CarroData(null, "BBC-223", null, null, null, null);
+        this.registro = new CarroData(null, "jjj-333", null, null, null, null);
         this.tipo = VehiculoType.CARRO;
         this.fechaEntrada = LocalDateTime.of(2019, 06, 03, 10, 10);
         this.fechaSalida = null;
@@ -37,6 +37,7 @@ public class RegistroCarroDataTestDataBuilder {
                 this.valorDia
         );
     }
+
 
 
 }

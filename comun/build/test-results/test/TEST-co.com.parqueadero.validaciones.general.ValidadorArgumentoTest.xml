@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.parqueadero.validaciones.general.ValidadorArgumentoTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-06-04T00:55:58" hostname="donald-Lenovo-ideapad-320-15ABR" time="0.054">
+<testsuite name="co.com.parqueadero.validaciones.general.ValidadorArgumentoTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-06-04T01:04:05" hostname="donald-Lenovo-ideapad-320-15ABR" time="0.091">
   <properties/>
-  <testcase name="validarNoNegativoCuandoEsNegativo" classname="co.com.parqueadero.validaciones.general.ValidadorArgumentoTest" time="0.047"/>
-  <testcase name="validarObligatorioCuandoEsNulo" classname="co.com.parqueadero.validaciones.general.ValidadorArgumentoTest" time="0.0"/>
-  <testcase name="validadorStringNoVacioCuandoEsNulo" classname="co.com.parqueadero.validaciones.general.ValidadorArgumentoTest" time="0.005"/>
+  <testcase name="validarNoNegativoCuandoEsNegativo" classname="co.com.parqueadero.validaciones.general.ValidadorArgumentoTest" time="0.074"/>
+  <testcase name="validarObligatorioCuandoEsNulo" classname="co.com.parqueadero.validaciones.general.ValidadorArgumentoTest" time="0.002"/>
+  <testcase name="validadorStringNoVacioCuandoEsNulo" classname="co.com.parqueadero.validaciones.general.ValidadorArgumentoTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

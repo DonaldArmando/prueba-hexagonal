@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.parqueadero.servicios.ConsultarDatosMotoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-04T00:56:07" hostname="donald-Lenovo-ideapad-320-15ABR" time="0.005">
+<testsuite name="co.com.parqueadero.servicios.ConsultarDatosMotoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-04T01:04:15" hostname="donald-Lenovo-ideapad-320-15ABR" time="0.008">
   <properties/>
-  <testcase name="consultarDatosMotoExitoso" classname="co.com.parqueadero.servicios.ConsultarDatosMotoTest" time="0.005"/>
+  <testcase name="consultarDatosMotoExitoso" classname="co.com.parqueadero.servicios.ConsultarDatosMotoTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

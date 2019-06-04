@@ -14,7 +14,7 @@ public class CarroDTOTestBuilder {
 
 
     public CarroDTOTestBuilder() {
-        this.placa = "BBC-223";
+        this.placa = "jjj-333";
         this.fechaEntrada = null;
         this.fechaSalida = null;
         this.valorHora = null;
