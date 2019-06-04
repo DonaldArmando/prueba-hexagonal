@@ -18,12 +18,23 @@ public class RegistroCarroDataTestDataBuilder {
 
     public RegistroCarroDataTestDataBuilder() {
         this.id = null;
-        this.registro = new CarroData(null, "BBC-223", null, null, null, null);
+        this.registro = new CarroData(null, "jjj-333", null, null, null, null);
         this.tipo = VehiculoType.CARRO;
         this.fechaEntrada = LocalDateTime.of(2019, 06, 03, 10, 10);
         this.fechaSalida = null;
         this.valorHora = 1000;
         this.valorDia = 8000;
+    }
+
+
+    public RegistroCarroDataTestDataBuilder conFechaEntrada(LocalDateTime fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
+        return this;
+    }
+
+    public RegistroCarroDataTestDataBuilder conRegistro(CarroData carroData) {
+        this.registro = carroData;
+        return this;
     }
 
     public Registro<CarroData> build() {

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.parqueadero.servicios.RegistrarMotoTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2019-06-04T00:56:06" hostname="donald-Lenovo-ideapad-320-15ABR" time="0.198">
+<testsuite name="co.com.parqueadero.servicios.RegistrarMotoTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2019-06-04T13:10:04" hostname="DONALD-TORRES" time="0.154">
   <properties/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistrada" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.135"/>
-  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.003"/>
-  <testcase name="ejecutarExitosoCuandoSiMaximoCuposValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.004"/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYNoEsNiLunesNiDomingo" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.007"/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYNoEsLunesExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.004"/>
-  <testcase name="ejecutarExitosoCuandoSiMaximoCuposValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.002"/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYNoEsLunesExcepcion" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.003"/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYEsLunes" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.007"/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYEsDomingo" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.011"/>
-  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.004"/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYEsDomingoYminusculaLaPrimeraLetra" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.005"/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaDiferenteDeAYNoEsNiDomingoNiLunes" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.004"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistrada" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.099"/>
+  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.004"/>
+  <testcase name="ejecutarExitosoCuandoSiMaximoCuposValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.005"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYNoEsNiLunesNiDomingo" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.004"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYNoEsLunesExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.007"/>
+  <testcase name="ejecutarExitosoCuandoSiMaximoCuposValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.003"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYNoEsLunesExcepcion" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.002"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYEsLunes" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.004"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYEsDomingo" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.004"/>
+  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.002"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYEsDomingoYminusculaLaPrimeraLetra" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.002"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaDiferenteDeAYNoEsNiDomingoNiLunes" classname="co.com.parqueadero.servicios.RegistrarMotoTest" time="0.016"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

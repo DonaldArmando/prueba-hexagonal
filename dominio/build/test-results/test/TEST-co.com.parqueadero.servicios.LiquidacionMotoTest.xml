@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.parqueadero.servicios.LiquidacionMotoTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-06-04T00:56:02" hostname="donald-Lenovo-ideapad-320-15ABR" time="4.057">
+<testsuite name="co.com.parqueadero.servicios.LiquidacionMotoTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-06-04T13:10:04" hostname="DONALD-TORRES" time="0.088">
   <properties/>
-  <testcase name="cuandoNoExisteVehiculoALiquidar" classname="co.com.parqueadero.servicios.LiquidacionMotoTest" time="4.008"/>
-  <testcase name="cuandoSeLiquidaCorrectamenteCilindrajeMayorDe500" classname="co.com.parqueadero.servicios.LiquidacionMotoTest" time="0.025"/>
-  <testcase name="cuandoNoExisteVehiculoALiquidarMensaje" classname="co.com.parqueadero.servicios.LiquidacionMotoTest" time="0.007"/>
-  <testcase name="cuandoSeLiquidaCorrectamenteMayor24Horas" classname="co.com.parqueadero.servicios.LiquidacionMotoTest" time="0.006"/>
-  <testcase name="cuandoSeLiquidaCorrectamenteMenorDeNueveHoras" classname="co.com.parqueadero.servicios.LiquidacionMotoTest" time="0.004"/>
-  <system-out><![CDATA[19:56:05.955 [Test worker] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
-]]></system-out>
+  <testcase name="cuandoNoExisteVehiculoALiquidar" classname="co.com.parqueadero.servicios.LiquidacionMotoTest" time="0.061"/>
+  <testcase name="cuandoSeLiquidaCorrectamenteCilindrajeMayorDe500" classname="co.com.parqueadero.servicios.LiquidacionMotoTest" time="0.004"/>
+  <testcase name="cuandoNoExisteVehiculoALiquidarMensaje" classname="co.com.parqueadero.servicios.LiquidacionMotoTest" time="0.002"/>
+  <testcase name="cuandoSeLiquidaCorrectamenteMayor24Horas" classname="co.com.parqueadero.servicios.LiquidacionMotoTest" time="0.013"/>
+  <testcase name="cuandoSeLiquidaCorrectamenteMenorDeNueveHoras" classname="co.com.parqueadero.servicios.LiquidacionMotoTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

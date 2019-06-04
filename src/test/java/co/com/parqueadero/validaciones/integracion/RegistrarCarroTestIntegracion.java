@@ -57,10 +57,11 @@ public class RegistrarCarroTestIntegracion {
     public void registrarCarroRespuestaRest() {
 
         //Arrange
-        CarroDTO carroDTO = new CarroDTOTestBuilder().build();
+        CarroDTO carroDTO = new CarroDTOTestBuilder()
+                .conPlaca("ppp-888")
+                .build();
 
         Registro<CarroData> carroRegistro = new RegistroCarroDataTestDataBuilder().build();
-
 
         //Act
         WebTestClient.ResponseSpec resultadoCarroRespuestaRest = webTestClient
@@ -70,14 +71,16 @@ public class RegistrarCarroTestIntegracion {
                 .exchange();
 
         //Assert
-        resultadoCarroRespuestaRest.expectBody().jsonPath("$.claseError").isNotEmpty();
-               /* .jsonPath("$.placa").isEqualTo(carroRegistro.getRegisto().getPlaca())
+        resultadoCarroRespuestaRest
+                .expectBody()
+                .jsonPath("$.placa").isEqualTo("ppp-888")
                 .jsonPath("$.valorHora").isEqualTo(carroRegistro.getValorHora())
                 .jsonPath("$.valorDia").isEqualTo(carroRegistro.getValorDia())
-                .jsonPath("$.fechaEntrada").isNotEmpty();*/
+                .jsonPath("$.fechaEntrada").isNotEmpty();
 
 
     }
+
 
 
 }
