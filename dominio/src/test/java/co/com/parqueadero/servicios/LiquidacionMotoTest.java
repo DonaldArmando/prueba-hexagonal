@@ -34,7 +34,7 @@ public class LiquidacionMotoTest {
 
         Moto motoConsulta = new MotoTestDataBuilder().build();
 
-        Tuple2<Moto, BigInteger> valorFinal = Tuples.of(motoSalida, BigInteger.valueOf(2000));
+        Tuple2<Moto, BigInteger> valorFinal = Tuples.of(motoSalida, BigInteger.valueOf(1500));
 
         ExistenciaVehiculo existenciaVehiculo = Mockito.mock(ExistenciaVehiculo.class);
         SalidaMoto salidaMoto = Mockito.mock(SalidaMoto.class);
@@ -77,7 +77,7 @@ public class LiquidacionMotoTest {
                 .conCilindraje(501)
                 .build();
 
-        Tuple2<Moto, BigInteger> valorFinal = Tuples.of(motoSalida, BigInteger.valueOf(4000));
+        Tuple2<Moto, BigInteger> valorFinal = Tuples.of(motoSalida, BigInteger.valueOf(3500));
 
         ExistenciaVehiculo existenciaVehiculo = Mockito.mock(ExistenciaVehiculo.class);
         SalidaMoto salidaMoto = Mockito.mock(SalidaMoto.class);
@@ -116,7 +116,7 @@ public class LiquidacionMotoTest {
 
         Moto motoConsulta = new MotoTestDataBuilder().build();
 
-        Tuple2<Moto, BigInteger> valorFinal = Tuples.of(motoSalida, BigInteger.valueOf(27000));
+        Tuple2<Moto, BigInteger> valorFinal = Tuples.of(motoSalida, BigInteger.valueOf(12000));
 
         ExistenciaVehiculo existenciaVehiculo = Mockito.mock(ExistenciaVehiculo.class);
         SalidaMoto salidaMoto = Mockito.mock(SalidaMoto.class);

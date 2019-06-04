@@ -73,7 +73,7 @@ public class LiquidacionCarroTest {
 
         Carro carroConsulta = new CarroTestDataBuilder().build();
 
-        Tuple2<Carro, BigInteger> valorFinal = Tuples.of(carroSalida, BigInteger.valueOf(27000));
+        Tuple2<Carro, BigInteger> valorFinal = Tuples.of(carroSalida, BigInteger.valueOf(24000));
 
         ExistenciaVehiculo existenciaVehiculo = Mockito.mock(ExistenciaVehiculo.class);
         SalidaCarro salidaCarro = Mockito.mock(SalidaCarro.class);

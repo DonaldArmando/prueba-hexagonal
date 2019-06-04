@@ -21,8 +21,8 @@ public final class CarroConvertidor {
                 VehiculoType.CARRO,
                 carro.getFechaEntrada(),
                 carro.getFechaSalida(),
-                carro.getValorDia(),
-                carro.getValorHora()
+                carro.getValorHora(),
+                carro.getValorDia()
         );
     }
 

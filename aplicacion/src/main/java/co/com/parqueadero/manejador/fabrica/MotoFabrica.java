@@ -20,8 +20,8 @@ public class MotoFabrica {
                 motoDTO.getPlaca(),
                 utilidadFecha.fechaActual(),
                 null,
-                1000,
-                9000,
+                500,
+                4000,
                 motoDTO.getCilindraje()
         );
     }

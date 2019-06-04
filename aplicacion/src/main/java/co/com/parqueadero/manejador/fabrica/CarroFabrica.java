@@ -21,7 +21,7 @@ public class CarroFabrica {
                 utilidadFecha.fechaActual(),
                 null,
                 1000,
-                9000
+                8000
         );
     }
 

@@ -1,17 +1,14 @@
 package co.com.parqueadero.validaciones.DTOTestBuilder;
 
-import co.com.parqueadero.core.modelos.Moto;
 import co.com.parqueadero.repositorio.mongodb.enums.VehiculoType;
-import co.com.parqueadero.repositorio.mongodb.modelo.MotoData;
+import co.com.parqueadero.repositorio.mongodb.modelo.CarroData;
 import co.com.parqueadero.repositorio.mongodb.modelo.Registro;
 
-import javax.xml.crypto.Data;
 import java.time.LocalDateTime;
 
-public class RegistroMotoDataTestDataBuilder {
-
+public class RegistroCarroDataTestDataBuilder {
     private String id;
-    private MotoData registro;
+    private CarroData registro;
     private VehiculoType tipo;
     private LocalDateTime fechaEntrada;
     private LocalDateTime fechaSalida;
@@ -19,17 +16,17 @@ public class RegistroMotoDataTestDataBuilder {
     private Integer valorDia;
 
 
-    public RegistroMotoDataTestDataBuilder() {
+    public RegistroCarroDataTestDataBuilder() {
         this.id = null;
-        this.registro = new MotoData(null, "BBC-123", null, null, null, null, 125);
-        this.tipo = VehiculoType.MOTO;
+        this.registro = new CarroData(null, "BBC-223", null, null, null, null);
+        this.tipo = VehiculoType.CARRO;
         this.fechaEntrada = LocalDateTime.of(2019, 06, 03, 10, 10);
         this.fechaSalida = null;
-        this.valorHora = 4000;
-        this.valorDia = 500;
+        this.valorHora = 1000;
+        this.valorDia = 8000;
     }
 
-    public Registro<MotoData> build() {
+    public Registro<CarroData> build() {
         return new Registro<>(
                 this.id,
                 this.registro,
@@ -40,5 +37,6 @@ public class RegistroMotoDataTestDataBuilder {
                 this.valorDia
         );
     }
+
 
 }

@@ -32,38 +32,45 @@ public class RegistrarMotoTestIntegracion {
 
     @Test
     public void registrarMotoComparacionBaseDeDatos() {
+
+        //Arrange
         MotoDTO motoDTO = new MotoDTOTestBuilder().build();
 
         Registro<MotoData> motoRegistro = new RegistroMotoDataTestDataBuilder().build();
 
-
-        webTestClient.post().uri("/motos").syncBody(motoDTO).exchange();
-
         Query query = Query.query(Criteria.where(Constantes.REGISTRO_PLACA).is(motoDTO.getPlaca()));
 
-
+        //Act
+        webTestClient.post().uri("/motos").syncBody(motoDTO).exchange();
         Registro<MotoData> resultado = this.reactiveMongoOperations.findOne(query, Registro.class).block();
 
+        //Assert
         Assert.assertEquals(resultado.getTipo(), motoRegistro.getTipo());
         Assert.assertEquals(resultado.getRegisto(), motoRegistro.getRegisto());
         Assert.assertEquals(resultado.getValorDia(), motoRegistro.getValorDia());
         Assert.assertEquals(resultado.getValorHora(), motoRegistro.getValorHora());
-
-
     }
 
 
     @Test
     public void registrarMotoRespuestaRest() {
+
+        //Arrange
         MotoDTO motoDTO = new MotoDTOTestBuilder().build();
 
         Registro<MotoData> motoRegistro = new RegistroMotoDataTestDataBuilder().build();
 
 
-        webTestClient.post().uri("/motos")
+        //Act
+        WebTestClient.ResponseSpec resultado = webTestClient
+                .post()
+                .uri("/motos")
                 .syncBody(motoDTO)
-                .exchange()
-                .expectBody()
+                .exchange();
+
+
+        //Assert
+        resultado.expectBody()
                 .jsonPath("$.placa").isEqualTo(motoRegistro.getRegisto().getPlaca())
                 .jsonPath("$.cilindraje").isEqualTo(motoRegistro.getRegisto().getCilindraje())
                 .jsonPath("$.valorHora").isEqualTo(motoRegistro.getValorHora())

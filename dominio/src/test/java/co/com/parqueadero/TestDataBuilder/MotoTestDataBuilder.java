@@ -16,10 +16,10 @@ public class MotoTestDataBuilder {
 
     public MotoTestDataBuilder() {
         this.placa = "BBC 123";
-        this.fechaEntrada = null;
+        this.fechaEntrada = LocalDateTime.of(1992, 10, 20, 10, 10);
         this.fechaSalida = null;
-        this.valorHora = null;
-        this.valorDia = null;
+        this.valorHora = 500;
+        this.valorDia = 4000;
         this.cilindraje = 125;
     }
 

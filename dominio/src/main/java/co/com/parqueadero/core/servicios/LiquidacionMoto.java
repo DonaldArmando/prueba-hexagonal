@@ -58,7 +58,8 @@ public class LiquidacionMoto {
     private Mono<Moto> registrarSalidaMoto(Moto moto) {
         return this.salidaMoto.salidaMoto(
                 moto.getPlaca(),
-                moto.getFechaSalida());
+                LocalDateTime.now()
+        );
     }
 
     private Tuple2<Moto, BigInteger> motoLiquidada(Moto moto) {
