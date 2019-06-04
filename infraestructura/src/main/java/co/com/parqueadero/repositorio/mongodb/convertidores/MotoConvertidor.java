@@ -22,8 +22,8 @@ public final class MotoConvertidor {
                 VehiculoType.MOTO,
                 moto.getFechaEntrada(),
                 moto.getFechaSalida(),
-                moto.getValorDia(),
-                moto.getValorHora()
+                moto.getValorHora(),
+                moto.getValorDia()
         );
     }
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.parqueadero.servicios.ConsultarDatosCarroTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-04T01:04:14" hostname="donald-Lenovo-ideapad-320-15ABR" time="0.133">
+<testsuite name="co.com.parqueadero.servicios.ConsultarDatosCarroTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-04T13:10:00" hostname="DONALD-TORRES" time="3.161">
   <properties/>
-  <testcase name="consultarDatosCarroExitoso" classname="co.com.parqueadero.servicios.ConsultarDatosCarroTest" time="0.133"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="consultarDatosCarroExitoso" classname="co.com.parqueadero.servicios.ConsultarDatosCarroTest" time="3.161"/>
+  <system-out><![CDATA[08:10:03.333 [Test worker] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
