@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.parqueadero.servicios.RegistrarCarroTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-05-30T18:08:06" hostname="DONALD-TORRES" time="2.684">
+<testsuite name="co.com.parqueadero.servicios.RegistrarCarroTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2019-06-04T00:56:06" hostname="donald-Lenovo-ideapad-320-15ABR" time="0.329">
   <properties/>
-  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistrada" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="2.669"/>
-  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.013"/>
-  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.002"/>
-  <system-out><![CDATA[13:08:08.550 [Test worker] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
-]]></system-out>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistrada" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.263"/>
+  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.008"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYNoEsNiLunesNiDomingo" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.004"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYNoEsLunesExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.007"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYNoEsLunesExcepcion" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.004"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYEsLunes" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.003"/>
+  <testcase name="ejecutarExitosoCuandoCantidadIngresadaValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.004"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYEsDomingo" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.005"/>
+  <testcase name="ejecutarExitosoCuandoSiExistePlacaRegistradaValidarExcepcionMensaje" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.003"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaPorAYEsDomingoYminusculaLaPrimeraLetra" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.01"/>
+  <testcase name="ejecutarExitosoCuandoCantidadIngresadaValidarExcepcion" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.004"/>
+  <testcase name="ejecutarExitosoCuandoNoExistePlacaRegistradaYLaPlacaEmpiezaDiferenteDeAYNoEsNiDomingoNiLunes" classname="co.com.parqueadero.servicios.RegistrarCarroTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

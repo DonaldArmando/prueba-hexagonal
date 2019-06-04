@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="co.com.parqueadero.servicios.LiquidacionCarroTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-06-04T00:56:07" hostname="donald-Lenovo-ideapad-320-15ABR" time="0.099">
+  <properties/>
+  <testcase name="cuandoNoExisteVehiculoALiquidar" classname="co.com.parqueadero.servicios.LiquidacionCarroTest" time="0.079"/>
+  <testcase name="cuandoNoExisteVehiculoALiquidarMensaje" classname="co.com.parqueadero.servicios.LiquidacionCarroTest" time="0.005"/>
+  <testcase name="cuandoSeLiquidaCorrectamenteMayor24Horas" classname="co.com.parqueadero.servicios.LiquidacionCarroTest" time="0.006"/>
+  <testcase name="cuandoSeLiquidaCorrectamenteMenorDeNueveHoras" classname="co.com.parqueadero.servicios.LiquidacionCarroTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

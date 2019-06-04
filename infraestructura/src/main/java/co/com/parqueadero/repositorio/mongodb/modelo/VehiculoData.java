@@ -24,6 +24,17 @@ public class VehiculoData {
     }
 
 
+    @Override
+    public String toString() {
+        return "VehiculoData{" +
+                "id='" + id + '\'' +
+                ", placa='" + placa + '\'' +
+                ", fechaEntrada=" + fechaEntrada +
+                ", fechaSalida=" + fechaSalida +
+                ", valorHora=" + valorHora +
+                ", valorDia=" + valorDia +
+                '}';
+    }
 
     public String getId() {
         return id;
@@ -71,5 +82,24 @@ public class VehiculoData {
 
     public void setValorDia(Integer valorDia) {
         this.valorDia = valorDia;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof VehiculoData)) return false;
+        VehiculoData that = (VehiculoData) o;
+        return Objects.equals(getId(), that.getId()) &&
+                Objects.equals(getPlaca(), that.getPlaca()) &&
+                Objects.equals(getFechaEntrada(), that.getFechaEntrada()) &&
+                Objects.equals(getFechaSalida(), that.getFechaSalida()) &&
+                Objects.equals(getValorHora(), that.getValorHora()) &&
+                Objects.equals(getValorDia(), that.getValorDia());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getPlaca(), getFechaEntrada(), getFechaSalida(), getValorHora(), getValorDia());
     }
 }

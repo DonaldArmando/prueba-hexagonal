@@ -1,6 +1,7 @@
 package co.com.parqueadero.repositorio.mongodb.modelo;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class MotoData extends VehiculoData {
 
@@ -20,6 +21,23 @@ public class MotoData extends VehiculoData {
     }
 
 
+    @Override
+    public String toString() {
+        return "MotoData{" +
+                "cilindraje=" + cilindraje +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MotoData)) return false;
+        MotoData motoData = (MotoData) o;
+        return Objects.equals(getCilindraje(), motoData.getCilindraje());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCilindraje());
+    }
 }

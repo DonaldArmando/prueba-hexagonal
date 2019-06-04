@@ -16,11 +16,11 @@ public class CarroTestDataBuilder {
 
 
     public CarroTestDataBuilder() {
-        this.placa = "ABC 123";
+        this.placa = "BBC 123";
         this.fechaEntrada = LocalDateTime.of(1992, 10, 20, 10, 20);
         this.fechaSalida = null;
         this.valorHora = 1000;
-        this.valorDia = 9000;
+        this.valorDia = 8000;
         this.cilindraje = 125;
     }
 
