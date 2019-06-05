@@ -1,6 +1,7 @@
 package co.com.parqueadero.manejador.fabrica;
 
 
+import co.com.parqueadero.core.configuracion.ConfiguracionGeneral;
 import co.com.parqueadero.core.modelos.Moto;
 import co.com.parqueadero.manejador.fabrica.dto.MotoDTO;
 import co.com.parqueadero.validaciones.utilidades.UtilidadFecha;
@@ -20,8 +21,8 @@ public class MotoFabrica {
                 motoDTO.getPlaca(),
                 utilidadFecha.fechaActual(),
                 null,
-                500,
-                4000,
+                ConfiguracionGeneral.VALOR_HORA_MOTO,
+                ConfiguracionGeneral.VALOR_DIA_MOTO,
                 motoDTO.getCilindraje()
         );
     }

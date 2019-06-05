@@ -1,5 +1,6 @@
 package co.com.parqueadero.core.servicios;
 
+import co.com.parqueadero.core.configuracion.ConfiguracionGeneral;
 import co.com.parqueadero.core.modelos.Carro;
 import co.com.parqueadero.core.repositorio.CantidadCarro;
 import co.com.parqueadero.core.repositorio.ExistenciaVehiculo;
@@ -81,7 +82,7 @@ public class RegistrarCarro {
     private Mono<Boolean> validarCantidadPermitida() {
         return this.cantidadCarro.cantidadCarro()
                 .map(cantidad -> {
-                    if (cantidad > 20) {
+                    if (cantidad > ConfiguracionGeneral.MAXIMO_CUPO_CARROS) {
                         throw new ExcepcionMaximoCupos(CUPO_MAXIMO_CARROS_OCUPADO);
                     }
                     return Boolean.TRUE;

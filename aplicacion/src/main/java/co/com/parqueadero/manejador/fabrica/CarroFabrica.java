@@ -1,5 +1,6 @@
 package co.com.parqueadero.manejador.fabrica;
 
+import co.com.parqueadero.core.configuracion.ConfiguracionGeneral;
 import co.com.parqueadero.core.modelos.Carro;
 import co.com.parqueadero.manejador.fabrica.dto.CarroDTO;
 import co.com.parqueadero.validaciones.utilidades.UtilidadFecha;
@@ -20,8 +21,8 @@ public class CarroFabrica {
                 carroDTO.getPlaca(),
                 utilidadFecha.fechaActual(),
                 null,
-                1000,
-                8000
+                ConfiguracionGeneral.VALOR_HORA_CARRO,
+                ConfiguracionGeneral.VALOR_DIA_CARRO
         );
     }
 
