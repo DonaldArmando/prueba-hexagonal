@@ -16,7 +16,7 @@ import java.math.BigInteger;
 
 @RestController
 @RequestMapping(path = "/carros")
-@CrossOrigin(allowCredentials = "*")
+@CrossOrigin(origins = "*")
 public class ControladorCarro {
 
     private final ManejadorIngresarCarro manejadorIngresarCarro;
