@@ -16,6 +16,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping(path = "/motos", produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin(allowCredentials = "*")
 public class ControladorMoto {
 
     private final ManejadorIngresarMoto manejadorIngresarMoto;
