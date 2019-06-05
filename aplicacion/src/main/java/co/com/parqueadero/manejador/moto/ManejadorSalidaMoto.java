@@ -1,6 +1,5 @@
 package co.com.parqueadero.manejador.moto;
 
-import co.com.parqueadero.core.modelos.Moto;
 import co.com.parqueadero.core.servicios.LiquidacionMoto;
 import co.com.parqueadero.manejador.fabrica.SalidaDTOConvertidor;
 import co.com.parqueadero.manejador.fabrica.dto.SalidaDTO;

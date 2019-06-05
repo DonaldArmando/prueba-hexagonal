@@ -6,7 +6,6 @@ import co.com.parqueadero.core.modelos.Moto;
 import co.com.parqueadero.manejador.fabrica.dto.MotoDTO;
 import co.com.parqueadero.validaciones.utilidades.UtilidadFecha;
 
-import java.time.LocalDateTime;
 
 public class MotoFabrica {
 

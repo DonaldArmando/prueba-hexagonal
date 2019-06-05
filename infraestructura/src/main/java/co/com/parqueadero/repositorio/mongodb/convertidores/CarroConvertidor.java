@@ -6,6 +6,8 @@ import co.com.parqueadero.repositorio.mongodb.modelo.CarroData;
 import co.com.parqueadero.repositorio.mongodb.modelo.Registro;
 
 public final class CarroConvertidor {
+    private CarroConvertidor() {
+    }
 
     public static Registro<CarroData> carroRegistro(Carro carro) {
         CarroData registoMoto = new CarroData(

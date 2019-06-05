@@ -8,6 +8,9 @@ import java.util.Objects;
 
 public final class ValidadorArgumento {
 
+    private ValidadorArgumento() {
+    }
+
     public static void validarObligatorio(Object valor, String mensaje) {
         if (Objects.isNull(valor)) {
             throw new ExcepcionValorObligatorio(mensaje);

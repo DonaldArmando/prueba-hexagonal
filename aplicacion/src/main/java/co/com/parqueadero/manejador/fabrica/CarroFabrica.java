@@ -5,7 +5,6 @@ import co.com.parqueadero.core.modelos.Carro;
 import co.com.parqueadero.manejador.fabrica.dto.CarroDTO;
 import co.com.parqueadero.validaciones.utilidades.UtilidadFecha;
 
-import java.time.LocalDateTime;
 
 public class CarroFabrica {
 

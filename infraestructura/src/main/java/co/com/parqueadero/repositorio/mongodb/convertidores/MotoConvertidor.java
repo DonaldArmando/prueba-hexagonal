@@ -7,6 +7,9 @@ import co.com.parqueadero.repositorio.mongodb.modelo.Registro;
 
 public final class MotoConvertidor {
 
+    private MotoConvertidor() {
+    }
+
     public static Registro<MotoData> motoRegistro(Moto moto) {
         MotoData registoMoto = new MotoData(
                 null,

@@ -2,11 +2,8 @@ package co.com.parqueadero.repositorio.mongodb.implementacion;
 
 
 import co.com.parqueadero.core.modelos.Moto;
-import co.com.parqueadero.core.repositorio.ExistenciaVehiculo;
 import co.com.parqueadero.core.repositorio.IngresarMoto;
 import co.com.parqueadero.repositorio.mongodb.convertidores.MotoConvertidor;
-import co.com.parqueadero.repositorio.mongodb.enums.VehiculoType;
-import co.com.parqueadero.repositorio.mongodb.modelo.Registro;
 import org.springframework.data.mongodb.core.ReactiveMongoOperations;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;

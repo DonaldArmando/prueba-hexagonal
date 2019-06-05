@@ -2,7 +2,6 @@ package co.com.parqueadero.manejador.carro;
 
 import co.com.parqueadero.core.modelos.Carro;
 import co.com.parqueadero.core.servicios.ConsultarDatosCarro;
-import co.com.parqueadero.manejador.fabrica.CarroFabrica;
 import reactor.core.publisher.Mono;
 
 public class ManejadorConsultarCarro {
