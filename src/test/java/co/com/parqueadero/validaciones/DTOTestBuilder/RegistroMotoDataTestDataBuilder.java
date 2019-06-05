@@ -25,8 +25,18 @@ public class RegistroMotoDataTestDataBuilder {
         this.tipo = VehiculoType.MOTO;
         this.fechaEntrada = LocalDateTime.of(2019, 06, 03, 10, 10);
         this.fechaSalida = null;
-        this.valorHora = 4000;
-        this.valorDia = 500;
+        this.valorHora = 500;
+        this.valorDia = 4000;
+    }
+
+    public RegistroMotoDataTestDataBuilder conFechaEntrada(LocalDateTime fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
+        return this;
+    }
+
+    public RegistroMotoDataTestDataBuilder conRegistro(MotoData motoData) {
+        this.registro = motoData;
+        return this;
     }
 
     public Registro<MotoData> build() {

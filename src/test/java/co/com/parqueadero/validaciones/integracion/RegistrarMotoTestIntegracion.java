@@ -56,9 +56,21 @@ public class RegistrarMotoTestIntegracion {
     public void registrarMotoRespuestaRest() {
 
         //Arrange
-        MotoDTO motoDTO = new MotoDTOTestBuilder().build();
+        MotoDTO motoDTO = new MotoDTOTestBuilder()
+                .conPlaca("dfg-654")
+                .build();
 
-        Registro<MotoData> motoRegistro = new RegistroMotoDataTestDataBuilder().build();
+        Registro<MotoData> motoRegistro = new RegistroMotoDataTestDataBuilder()
+                .conRegistro(new MotoData(
+                        null,
+                        "dfg-654",
+                        null,
+                        null,
+                        null,
+                        null,
+                        125
+                ))
+                .build();
 
 
         //Act

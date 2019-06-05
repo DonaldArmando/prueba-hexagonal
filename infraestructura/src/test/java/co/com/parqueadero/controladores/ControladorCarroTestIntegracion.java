@@ -49,7 +49,8 @@ public class ControladorCarroTestIntegracion {
                 .post()
                 .uri("/carros")
                 .contentType(MediaType.APPLICATION_JSON)
-                .syncBody(carroDTO).exchange();
+                .syncBody(carroDTO)
+                .exchange();
 
 
         //Assert
